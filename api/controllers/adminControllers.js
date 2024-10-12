@@ -16,9 +16,21 @@ exports.getNextStudentID = async (req, res) => {
     if (result[0].studentID != "1000000001") {
       res.json(result[0].studentID);
     } else {
-      res.json(String(parseInt(result[0].studentID) + 1)); 
+      res.json(String(parseInt(result[0].studentID) + 1));
     }
   });
 };
 
+exports.registerStudent = async (req, res) => {
+  const { studentID, name, age, contact, gname, gaddress, gcontact } = req.body;
 
+  const sql = `INSERT INTO student (studentID, name, age, contactNo) VALUES (?, ?, ?, ?)`;
+
+  const values = [studentID, name, age, contact];
+
+  connection.query(sql, values, (err, result) => {
+    if (err) {
+      throw err;
+    }
+  });
+};
