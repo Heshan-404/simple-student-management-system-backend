@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
-const connection = require("./utils/database.connection");
+const connection = require("./utils/database.connection"); 
 const {
   getStudentList,
   registerStudent,
@@ -28,7 +28,7 @@ app.use("/api/get-new-student-id", getNextStudentID);
 app.post("/api/register-student", registerStudent);
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
+  console.log(`Server is running on port ${PORT}.`); // remove this after
   connection.connect(function (err) {
     if (err) throw err;
     console.log("DB_Connected");
